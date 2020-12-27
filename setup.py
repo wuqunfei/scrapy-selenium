@@ -1,8 +1,9 @@
 """This module contains the packaging routine for the pybook package"""
 
 from setuptools import setup, find_packages
-from pip._internal.network.session import PipSession
-from pip._internal.req import parse_requirements
+
+from pip.download import PipSession
+from pip.req import parse_requirements
 
 
 def get_requirements(source):

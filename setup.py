@@ -2,10 +2,6 @@
 
 from setuptools import setup, find_packages
 
-from pip.download import PipSession
-from pip.req import parse_requirements
-
-
 def get_requirements(source):
     """Get the requirements from the given ``source``
 
@@ -16,9 +12,8 @@ def get_requirements(source):
 
     """
 
-    install_reqs = parse_requirements(filename=source, session=PipSession())
-
-    return [str(ir.req) for ir in install_reqs]
+    with open(source) as f:
+        dependencies = [line for line in f if "==" in line]
 
 
 setup(
